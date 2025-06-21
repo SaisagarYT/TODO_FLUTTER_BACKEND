@@ -14,12 +14,13 @@ const getTasks = async(req,res) =>{
 }
 
 const sendTasks = async(req,res) =>{
-    const  {task,description} = req.body;
+    const  {task,description,tab} = req.body;
     try{
         const isInserted = new  Task({
             task,
             date: new Date(),
-            description
+            description,
+            tab
         })
         if(!isInserted){
             return res.status(400).json({message:"Task not inserted into the db"});
